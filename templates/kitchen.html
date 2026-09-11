@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>خزانة المطبخ - Home Manager</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>خزانة المطبخ</h1>
+    <p>إدارة الموارد الموجودة في المنزل</p>
+</header>
+
+<main>
+
+<div class="form-card">
+
+    <h2>إضافة مورد</h2>
+
+    <form action="/add_kitchen" method="POST">
+
+        <input
+            type="text"
+            name="name"
+            placeholder="اسم المورد مثل: أرز"
+            required>
+
+        <input
+            type="text"
+            name="category"
+            placeholder="التصنيف مثل: حبوب"
+            required>
+
+        <input
+            type="text"
+            name="quantity"
+            placeholder="الكمية"
+            required>
+
+        <button type="submit">
+            إضافة المورد
+        </button>
+
+    </form>
+
+</div>
+
+
+<div class="list-card">
+
+    <h2>الموارد الموجودة</h2>
+
+    {% if kitchen %}
+
+        {% for item in kitchen %}
+
+        <div class="item">
+
+            <div>
+
+                <strong>
+                    {{ item.name }}
+                </strong>
+
+                <p>
+                    التصنيف: {{ item.category }}
+                </p>
+
+                <p>
+                    الكمية: {{ item.quantity }}
+                </p>
+
+            </div>
+
+            <a href="/delete_kitchen/{{ loop.index0 }}">
+                <button class="delete">
+                    حذف
+                </button>
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p class="empty">
+            لا توجد موارد مضافة حتى الآن.
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+<a href="/">
+    <button class="home-button">
+        الرئيسية
+    </button>
+</a>
+
+</main>
+
+</div>
+
+</body>
+</html>

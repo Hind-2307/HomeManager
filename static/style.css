@@ -1,0 +1,296 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #EAF4EA;
+    color: #2E6B4E;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: #2E6B4E;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+header h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    flex: 1;
+}
+
+main h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 26px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+button {
+    background: #2E6B4E;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #24563F;
+}
+
+.form-card,
+.list-card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.form-card h2,
+.list-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-card p {
+    color: #555;
+    text-align: center;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: 2px solid #5C8D89;
+    border-color: #5C8D89;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #ddd;
+    padding: 18px 5px;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.item strong {
+    font-size: 19px;
+}
+
+.item p {
+    color: #666;
+    margin-top: 6px;
+}
+
+.delete {
+    background: #B85450;
+    padding: 9px 18px;
+}
+
+.delete:hover {
+    background: #963F3B;
+}
+
+.home-button {
+    display: block;
+    margin: 20px auto;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+    padding: 20px;
+}
+
+.recipe {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 5px;
+}
+
+.recipe:last-child {
+    border-bottom: none;
+}
+
+.recipe h3 {
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.progress {
+    width: 100%;
+    height: 12px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #5C8D89;
+}
+
+.recipe p {
+    margin-top: 8px;
+    color: #555;
+}
+
+.available {
+    color: #2E6B4E !important;
+}
+
+.missing {
+    color: #B85450 !important;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #5C8D89;
+}
+
+
+/* الجوال */
+
+@media (max-width: 650px) {
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    main {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    main h2 {
+        font-size: 22px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 25px 20px;
+    }
+
+    .form-card,
+    .list-card {
+        padding: 20px 15px;
+    }
+
+    .item {
+        align-items: flex-start;
+    }
+
+    .item .delete {
+        flex-shrink: 0;
+    }
+}
+.language-area {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.language-area button {
+    background: white;
+    color: #2E6B4E;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.language-area button:hover {
+    background: #f0f0f0;
+}
+
+header {
+    position: relative;
+}

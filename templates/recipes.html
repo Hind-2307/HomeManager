@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ماذا أطبخ؟</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+    <div class="language-area">
+        <button onclick="toggleLanguage()" id="languageButton">
+            EN
+        </button>
+    </div>
+
+    <h1 id="pageTitle">
+        ماذا أطبخ؟
+    </h1>
+
+    <p id="pageSubtitle">
+        اكتشفي الوصفات المناسبة للمكونات الموجودة لديكِ
+    </p>
+
+</header>
+
+
+<main>
+
+<div class="form-card">
+
+    <h2 id="searchTitle">
+        البحث عن وصفات
+    </h2>
+
+    <p id="searchText">
+        سيقارن البرنامج المكونات الموجودة في الأطعمة
+        وخزانة المطبخ مع الوصفات.
+    </p>
+
+    <form action="/find_recipes" method="POST">
+
+        <button type="submit" id="searchButton">
+            البحث عن وصفات
+        </button>
+
+    </form>
+
+</div>
+
+
+{% if results %}
+
+<div class="list-card">
+
+    <h2 id="resultsTitle">
+        النتائج
+    </h2>
+
+
+    {% for recipe in results %}
+
+    <div class="recipe">
+
+        <h3>
+            {{ recipe.name }}
+        </h3>
+
+        <div class="progress">
+
+            <div class="progress-bar"
+                 style="width {{ recipe.percentage }}%;">
+            </div>
+
+        </div>
+
+
+        <p>
+            <strong>متوفر:</strong>
+            {{ recipe.percentage }}%
+        </p>
+
+
+        {% if recipe.available %}
+
+        <p class="available">
+
+            الموجود:
+
+            {{ recipe.available | join(", ") }}
+
+        </p>
+
+        {% endif %}
+
+
+        {% if recipe.missing %}
+
+        <p class="missing">
+
+            الناقص:
+
+            {{ recipe.missing | join(", ") }}
+
+        </p>
+
+        {% else %}
+
+        <p class="available">
+            يمكنكِ تحضير هذه الوصفة!
+        </p>
+
+        {% endif %}
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+
+<a href="/">
+
+    <button class="home-button">
+        الرئيسية
+    </button>
+
+</a>
+
+</main>
+
+</div>
+
+
+<script>
+
+let arabic = true;
+
+function toggleLanguage() {
+
+    arabic = !arabic;
+
+    const button =
+        document.getElementById("languageButton");
+
+    if (arabic) {
+
+        document.documentElement.lang = "ar";
+        document.documentElement.dir = "rtl";
+
+        button.innerText = "EN";
+
+        document.getElementById("pageTitle").innerText =
+            "ماذا أطبخ؟";
+
+        document.getElementById("pageSubtitle").innerText =
+            "اكتشفي الوصفات المناسبة للمكونات الموجودة لديكِ";
+
+        document.getElementById("searchTitle").innerText =
+            "البحث عن وصفات";
+
+        document.getElementById("searchText").innerText =
+            "سيُقارن البرنامج المكونات الموجودة في الأطعمة وخزانة المطبخ مع الوصفات.";
+
+        document.getElementById("searchButton").innerText =
+            "البحث عن وصفات";
+
+        document.getElementById("resultsTitle").innerText =
+            "النتائج";
+
+    } else {
+
+        document.documentElement.lang = "en";
+        document.documentElement.dir = "ltr";
+
+        button.innerText = "AR";
+
+        document.getElementById("pageTitle").innerText =
+            "What Should I Cook?";
+
+        document.getElementById("pageSubtitle").innerText =
+            "Discover recipes based on the ingredients you have";
+
+        document.getElementById("searchTitle").innerText =
+            "Find Recipes";
+
+        document.getElementById("searchText").innerText =
+            "The program will compare your available food and kitchen resources with the recipes.";
+
+        document.getElementById("searchButton").innerText =
+            "Find Recipes";
+
+        document.getElementById("resultsTitle").innerText =
+            "Results";
+    }
+}
+
+</script>
+
+</body>
+</html>

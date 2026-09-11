@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>الأطعمة - Home Manager</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>الأطعمة</h1>
+    <p>إدارة الأطعمة والكميات</p>
+</header>
+
+<main>
+
+<div class="form-card">
+
+    <h2>إضافة طعام</h2>
+
+    <form action="/add_food" method="POST">
+
+        <input
+            type="text"
+            name="name"
+            placeholder="اسم الطعام"
+            required>
+
+        <input
+            type="text"
+            name="quantity"
+            placeholder="الكمية"
+            required>
+
+        <label>تاريخ الانتهاء</label>
+
+        <input
+            type="date"
+            name="expiry"
+            required>
+
+        <button type="submit">
+            إضافة الطعام
+        </button>
+
+    </form>
+
+</div>
+
+
+<div class="list-card">
+
+    <h2>الأطعمة الموجودة</h2>
+
+    {% if foods %}
+
+        {% for food in foods %}
+
+        <div class="item">
+
+            <div>
+                <strong>{{ food.name }}</strong>
+
+                <p>
+                    الكمية: {{ food.quantity }}
+                </p>
+
+                <p>
+                    الانتهاء: {{ food.expiry }}
+                </p>
+            </div>
+
+            <a href="/delete_food/{{ loop.index0 }}">
+                <button class="delete">
+                    حذف
+                </button>
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p class="empty">
+            لا توجد أطعمة مضافة حتى الآن.
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+<a href="/">
+    <button class="home-button">
+        الرئيسية
+    </button>
+</a>
+
+</main>
+
+</div>
+
+</body>
+</html>
