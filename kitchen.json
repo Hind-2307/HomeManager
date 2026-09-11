@@ -1,0 +1,47 @@
+[
+    [
+        "rice",
+        "grains",
+        "5 kg"
+    ],
+    [
+        "sugar",
+        "baking",
+        "2 kg"
+    ],
+    [
+        "cooking oil",
+        "oils",
+        "1 bottle"
+    ],
+    [
+        "salt",
+        "spices",
+        "1 pack"
+    ],
+    [
+        "oil",
+        "oils",
+        "1 bottle"
+    ],
+    [
+        "onion",
+        "veges",
+        "5"
+    ],
+    {
+        "name": "rice",
+        "category": "grains",
+        "quantity": "1"
+    },
+    {
+        "name": "oil",
+        "category": "oils",
+        "quantity": "2 bottl"
+    },
+    {
+        "name": "salt",
+        "category": "spices",
+        "quantity": "2 pack"
+    }
+]

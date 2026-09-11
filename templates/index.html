@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home Manager</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+    <div class="language-area">
+        <button onclick="toggleLanguage()" id="languageButton">
+            EN
+        </button>
+    </div>
+
+    <h1 id="title">
+        Home Manager
+    </h1>
+
+    <p id="subtitle">
+        نظّمي موارد منزلك بسهولة
+    </p>
+
+</header>
+
+
+<main>
+
+    <h2 id="question">
+        ماذا تريدين أن تديري اليوم؟
+    </h2>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">🍎</div>
+
+            <h3 id="foodTitle">
+                الأطعمة
+            </h3>
+
+            <p id="foodText">
+                أضيفي الأطعمة وتابعي الكميات وتواريخ الانتهاء.
+            </p>
+
+            <a href="/foods">
+                <button id="foodButton">
+                    فتح
+                </button>
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🗄️</div>
+
+            <h3 id="kitchenTitle">
+                خزانة المطبخ
+            </h3>
+
+            <p id="kitchenText">
+                سجلي الموارد الموجودة في خزانة المطبخ.
+            </p>
+
+            <a href="/kitchen">
+                <button id="kitchenButton">
+                    فتح
+                </button>
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">💊</div>
+
+            <h3 id="medicineTitle">
+                الأدوية
+            </h3>
+
+            <p id="medicineText">
+                تابعي الأدوية والكميات وتواريخ الانتهاء.
+            </p>
+
+            <a href="/medicines">
+                <button id="medicineButton">
+                    فتح
+                </button>
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🍳</div>
+
+            <h3 id="recipeTitle">
+                ماذا أطبخ؟
+            </h3>
+
+            <p id="recipeText">
+                اكتشفي الوصفات المناسبة للمكونات الموجودة لديكِ.
+            </p>
+
+            <a href="/recipes">
+                <button id="recipeButton">
+                    فتح
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+    <p>Home Manager</p>
+</footer>
+
+</div>
+
+
+<script>
+
+let arabic = true;
+
+function toggleLanguage() {
+
+    arabic = !arabic;
+
+    const button = document.getElementById("languageButton");
+
+    if (arabic) {
+
+        document.documentElement.lang = "ar";
+        document.documentElement.dir = "rtl";
+
+        button.innerText = "EN";
+
+        document.getElementById("subtitle").innerText =
+            "نظّمي موارد منزلك بسهولة";
+
+        document.getElementById("question").innerText =
+            "ماذا تريدين أن تديري اليوم؟";
+
+        document.getElementById("foodTitle").innerText =
+            "الأطعمة";
+
+        document.getElementById("foodText").innerText =
+            "أضيفي الأطعمة وتابعي الكميات وتواريخ الانتهاء.";
+
+        document.getElementById("foodButton").innerText =
+            "فتح";
+
+        document.getElementById("kitchenTitle").innerText =
+            "خزانة المطبخ";
+
+        document.getElementById("kitchenText").innerText =
+            "سجلي الموارد الموجودة في خزانة المطبخ.";
+
+        document.getElementById("kitchenButton").innerText =
+            "فتح";
+
+        document.getElementById("medicineTitle").innerText =
+            "الأدوية";
+
+        document.getElementById("medicineText").innerText =
+            "تابعي الأدوية والكميات وتواريخ الانتهاء.";
+
+        document.getElementById("medicineButton").innerText =
+            "فتح";
+
+        document.getElementById("recipeTitle").innerText =
+            "ماذا أطبخ؟";
+
+        document.getElementById("recipeText").innerText =
+            "اكتشفي الوصفات المناسبة للمكونات الموجودة لديكِ.";
+
+        document.getElementById("recipeButton").innerText =
+            "فتح";
+
+    } else {
+
+        document.documentElement.lang = "en";
+        document.documentElement.dir = "ltr";
+
+        button.innerText = "AR";
+
+        document.getElementById("subtitle").innerText =
+            "Organize your home resources easily";
+
+        document.getElementById("question").innerText =
+            "What would you like to manage today?";
+
+        document.getElementById("foodTitle").innerText =
+            "Foods";
+
+        document.getElementById("foodText").innerText =
+            "Add foods and track quantities and expiry dates.";
+
+        document.getElementById("foodButton").innerText =
+            "Open";
+
+        document.getElementById("kitchenTitle").innerText =
+            "Kitchen Cabinet";
+
+        document.getElementById("kitchenText").innerText =
+            "Manage the resources in your kitchen cabinet.";
+
+        document.getElementById("kitchenButton").innerText =
+            "Open";
+
+        document.getElementById("medicineTitle").innerText =
+            "Medicines";
+
+        document.getElementById("medicineText").innerText =
+            "Track medicines, quantities and expiry dates.";
+
+        document.getElementById("medicineButton").innerText =
+            "Open";
+
+        document.getElementById("recipeTitle").innerText =
+            "What Should I Cook?";
+
+        document.getElementById("recipeText").innerText =
+            "Discover recipes based on the ingredients you have.";
+
+        document.getElementById("recipeButton").innerText =
+            "Open";
+    }
+}
+
+</script>
+
+</body>
+</html>

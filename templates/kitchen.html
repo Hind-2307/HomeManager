@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>خزانة المطبخ - Home Manager</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+    <div class="language-area">
+
+        <button onclick="toggleLanguage()"
+                id="languageButton">
+            EN
+        </button>
+
+    </div>
+
+    <h1 id="pageTitle">
+        خزانة المطبخ
+    </h1>
+
+    <p id="pageSubtitle">
+        إدارة الموارد الموجودة في المنزل
+    </p>
+
+</header>
+
+
+<main>
+
+<div class="form-card">
+
+    <h2 id="addTitle">
+        إضافة مورد
+    </h2>
+
+    <form action="/add_kitchen" method="POST">
+
+        <input
+            type="text"
+            name="name"
+            id="nameInput"
+            placeholder="اسم المورد مثل: أرز"
+            required>
+
+        <input
+            type="text"
+            name="category"
+            id="categoryInput"
+            placeholder="التصنيف مثل: حبوب"
+            required>
+
+        <input
+            type="text"
+            name="quantity"
+            id="quantityInput"
+            placeholder="الكمية"
+            required>
+
+        <button type="submit"
+                id="addButton">
+            إضافة المورد
+        </button>
+
+    </form>
+
+</div>
+
+
+<div class="list-card">
+
+    <h2 id="listTitle">
+        الموارد الموجودة
+    </h2>
+
+    {% if kitchen %}
+
+        {% for item in kitchen %}
+
+        <div class="item">
+
+            <div>
+
+                <strong>
+                    {{ item.name }}
+                </strong>
+
+                <p>
+                    <span class="category-label">
+                        التصنيف:
+                    </span>
+                    {{ item.category }}
+                </p>
+
+                <p>
+                    <span class="quantity-label">
+                        الكمية:
+                    </span>
+                    {{ item.quantity }}
+                </p>
+
+            </div>
+
+            <a href="/delete_kitchen/{{ loop.index0 }}">
+
+                <button class="delete"
+                        type="button">
+                    حذف
+                </button>
+
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p class="empty"
+           id="emptyText">
+            لا توجد موارد مضافة حتى الآن.
+        </p>
+
+    {% endif %}
+
+</div>
+
+
+<a href="/">
+
+    <button class="home-button"
+            id="homeButton">
+        الرئيسية
+    </button>
+
+</a>
+
+</main>
+
+</div>
+
+
+<script>
+
+let arabic = true;
+
+function toggleLanguage() {
+
+    arabic = !arabic;
+
+    const button =
+        document.getElementById("languageButton");
+
+    if (arabic) {
+
+        document.documentElement.lang = "ar";
+        document.documentElement.dir = "rtl";
+
+        button.innerText = "EN";
+
+        document.getElementById("pageTitle").innerText =
+            "خزانة المطبخ";
+
+        document.getElementById("pageSubtitle").innerText =
+            "إدارة الموارد الموجودة في المنزل";
+
+        document.getElementById("addTitle").innerText =
+            "إضافة مورد";
+
+        document.getElementById("nameInput").placeholder =
+            "اسم المورد مثل: أرز";
+
+        document.getElementById("categoryInput").placeholder =
+            "التصنيف مثل: حبوب";
+
+        document.getElementById("quantityInput").placeholder =
+            "الكمية";
+
+        document.getElementById("addButton").innerText =
+            "إضافة المورد";
+
+        document.getElementById("listTitle").innerText =
+            "الموارد الموجودة";
+
+        document.querySelectorAll(".category-label")
+            .forEach(el => el.innerText = "التصنيف:");
+
+        document.querySelectorAll(".quantity-label")
+            .forEach(el => el.innerText = "الكمية:");
+
+        document.querySelectorAll(".delete")
+            .forEach(el => el.innerText = "حذف");
+
+        if (document.getElementById("emptyText")) {
+            document.getElementById("emptyText").innerText =
+                "لا توجد موارد مضافة حتى الآن.";
+        }
+
+        document.getElementById("homeButton").innerText =
+            "الرئيسية";
+
+    } else {
+
+        document.documentElement.lang = "en";
+        document.documentElement.dir = "ltr";
+
+        button.innerText = "AR";
+
+        document.getElementById("pageTitle").innerText =
+            "Kitchen Cabinet";
+
+        document.getElementById("pageSubtitle").innerText =
+            "Manage the resources in your home";
+
+        document.getElementById("addTitle").innerText =
+            "Add Resource";
+
+        document.getElementById("nameInput").placeholder =
+            "Resource name, e.g. Rice";
+
+        document.getElementById("categoryInput").placeholder =
+            "Category, e.g. Grains";
+
+        document.getElementById("quantityInput").placeholder =
+            "Quantity";
+
+        document.getElementById("addButton").innerText =
+            "Add Resource";
+
+        document.getElementById("listTitle").innerText =
+            "Available Resources";
+
+        document.querySelectorAll(".category-label")
+            .forEach(el => el.innerText = "Category:");
+
+        document.querySelectorAll(".quantity-label")
+            .forEach(el => el.innerText = "Quantity:");
+
+        document.querySelectorAll(".delete")
+            .forEach(el => el.innerText = "Delete");
+
+        if (document.getElementById("emptyText")) {
+            document.getElementById("emptyText").innerText =
+                "No resources have been added yet.";
+        }
+
+        document.getElementById("homeButton").innerText =
+            "Home";
+    }
+}
+
+</script>
+
+</body>
+</html>
