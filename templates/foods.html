@@ -105,15 +105,15 @@
                 {% if food.status == "expired" %}
 
                     <p class="missing">
-                        <span class="warning-text">
-                            هذا الطعام منتهي الصلاحية
-                        </span>
+                       <span class="warning-text" data-type="expired">
+                               هذا الطعام منتهي الصلاحية
+                           </span>
                     </p>
 
                 {% elif food.status == "soon" %}
 
                     <p class="missing">
-                        <span class="warning-text">
+                        <span class="warning-text" data-type="soon">
                             تنبيه: تاريخ الانتهاء قريب
                         </span>
                     </p>
@@ -163,147 +163,80 @@
 
 
 <script>
-
 let arabic = true;
 
 function toggleLanguage() {
-
     arabic = !arabic;
 
-    const button =
-        document.getElementById("languageButton");
+    const button = document.getElementById("languageButton");
 
     if (arabic) {
-
         document.documentElement.lang = "ar";
         document.documentElement.dir = "rtl";
-
         button.innerText = "EN";
 
-        document.getElementById("pageTitle").innerText =
-            "الأطعمة";
+        document.getElementById("pageTitle").innerText = "الأطعمة";
+        document.getElementById("pageSubtitle").innerText = "إدارة الأطعمة والكميات وتواريخ الانتهاء";
+        document.getElementById("addTitle").innerText = "إضافة طعام";
+        document.getElementById("nameInput").placeholder = "اسم الطعام";
+        document.getElementById("quantityInput").placeholder = "الكمية";
+        document.getElementById("expiryLabel").innerText = "تاريخ الانتهاء";
+        document.getElementById("addButton").innerText = "إضافة الطعام";
+        document.getElementById("listTitle").innerText = "الأطعمة الموجودة";
 
-        document.getElementById("pageSubtitle").innerText =
-            "إدارة الأطعمة والكميات وتواريخ الانتهاء";
-
-        document.getElementById("addTitle").innerText =
-            "إضافة طعام";
-
-        document.getElementById("nameInput").placeholder =
-            "اسم الطعام";
-
-        document.getElementById("quantityInput").placeholder =
-            "الكمية";
-
-        document.getElementById("expiryLabel").innerText =
-            "تاريخ الانتهاء";
-
-        document.getElementById("addButton").innerText =
-            "إضافة الطعام";
-
-        document.getElementById("listTitle").innerText =
-            "الأطعمة الموجودة";
-
-        document.querySelectorAll(".quantity-label")
-            .forEach(el => el.innerText = "الكمية:");
-
-        document.querySelectorAll(".expiry-text")
-            .forEach(el => el.innerText = "الانتهاء:");
-
-        document.querySelectorAll(".warning-text")
-            .forEach(el => {
-
-                if (
-                    el.innerText.includes("expired") ||
-                    el.innerText.includes("انتهى")
-                ) {
-                    el.innerText =
-                        "هذا الطعام منتهي الصلاحية";
-                } else {
-                    el.innerText =
-                        "تنبيه: تاريخ الانتهاء قريب";
-                }
-
-            });
-
-        document.querySelectorAll(".delete")
-            .forEach(el => el.innerText = "حذف");
-
-        if (document.getElementById("emptyText")) {
-
-            document.getElementById("emptyText").innerText =
-                "لا توجد أطعمة مضافة حتى الآن.";
-
+        const emptyText = document.getElementById("emptyText");
+        if (emptyText) {
+            emptyText.innerText = "لا توجد أطعمة مضافة حتى الآن.";
         }
 
-        document.getElementById("homeButton").innerText =
-            "الرئيسية";
+        document.getElementById("homeButton").innerText = "الرئيسية";
+
+        document.querySelectorAll(".delete").forEach(el => {
+            el.innerText = "حذف";
+        });
+
+        document.querySelectorAll(".warning-text").forEach(el => {
+            if (el.dataset.type === "expired") {
+                el.innerText = "هذا الطعام منتهي الصلاحية";
+            } else {
+                el.innerText = "تنبيه: تاريخ الانتهاء قريب";
+            }
+        });
 
     } else {
-
         document.documentElement.lang = "en";
         document.documentElement.dir = "ltr";
-
         button.innerText = "AR";
 
-        document.getElementById("pageTitle").innerText =
-            "Foods";
+        document.getElementById("pageTitle").innerText = "Foods";
+        document.getElementById("pageSubtitle").innerText = "Manage food, quantities and expiry dates";
+        document.getElementById("addTitle").innerText = "Add Food";
+        document.getElementById("nameInput").placeholder = "Food name";
+        document.getElementById("quantityInput").placeholder = "Quantity";
+        document.getElementById("expiryLabel").innerText = "Expiry Date";
+        document.getElementById("addButton").innerText = "Add Food";
+        document.getElementById("listTitle").innerText = "Available Foods";
 
-        document.getElementById("pageSubtitle").innerText =
-            "Manage foods, quantities and expiry dates";
-
-        document.getElementById("addTitle").innerText =
-            "Add Food";
-
-        document.getElementById("nameInput").placeholder =
-            "Food name";
-
-        document.getElementById("quantityInput").placeholder =
-            "Quantity";
-
-        document.getElementById("expiryLabel").innerText =
-            "Expiry Date";
-
-        document.getElementById("addButton").innerText =
-            "Add Food";
-
-        document.getElementById("listTitle").innerText =
-            "Available Foods";
-
-        document.querySelectorAll(".quantity-label")
-            .forEach(el => el.innerText = "Quantity:");
-
-        document.querySelectorAll(".expiry-text")
-            .forEach(el => el.innerText = "Expiry:");
-
-        document.querySelectorAll(".warning-text")
-            .forEach(el => {
-
-                if (el.innerText.includes("منتهي")) {
-                    el.innerText =
-                        "This food has expired";
-                } else {
-                    el.innerText =
-                        "Warning: Expiry date is near";
-                }
-
-            });
-
-        document.querySelectorAll(".delete")
-            .forEach(el => el.innerText = "Delete");
-
-        if (document.getElementById("emptyText")) {
-
-            document.getElementById("emptyText").innerText =
-                "No foods have been added yet.";
-
+        const emptyText = document.getElementById("emptyText");
+        if (emptyText) {
+            emptyText.innerText = "No foods added yet.";
         }
 
-        document.getElementById("homeButton").innerText =
-            "Home";
+        document.getElementById("homeButton").innerText = "Home";
+
+        document.querySelectorAll(".delete").forEach(el => {
+            el.innerText = "Delete";
+        });
+
+        document.querySelectorAll(".warning-text").forEach(el => {
+            if (el.dataset.type === "expired") {
+                el.innerText = "This food has expired";
+            } else {
+                el.innerText = "Warning: Expiry date is near";
+            }
+        });
     }
 }
-
 </script>
 
 </body>

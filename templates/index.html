@@ -137,7 +137,6 @@
 
 </div>
 
-
 <script>
 
 let arabic = true;
@@ -154,6 +153,9 @@ function toggleLanguage() {
         document.documentElement.dir = "rtl";
 
         button.innerText = "EN";
+
+        document.getElementById("title").innerText =
+            "Home Manager";
 
         document.getElementById("subtitle").innerText =
             "نظّمي موارد منزلك بسهولة";
@@ -203,6 +205,9 @@ function toggleLanguage() {
         document.documentElement.dir = "ltr";
 
         button.innerText = "AR";
+
+        document.getElementById("title").innerText =
+            "Home Manager";
 
         document.getElementById("subtitle").innerText =
             "Organize your home resources easily";

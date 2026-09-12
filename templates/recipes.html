@@ -88,7 +88,7 @@
         <div class="progress">
 
             <div class="progress-bar"
-                 style="width {{ recipe.percentage }}%;">
+                 style="width  {{ recipe.percentage }}%;">
             </div>
 
         </div>
@@ -160,7 +160,6 @@
 
 </div>
 
-
 <script>
 
 let arabic = true;
@@ -169,8 +168,7 @@ function toggleLanguage() {
 
     arabic = !arabic;
 
-    const button =
-        document.getElementById("languageButton");
+    const button = document.getElementById("languageButton");
 
     if (arabic) {
 
@@ -194,9 +192,10 @@ function toggleLanguage() {
         document.getElementById("searchButton").innerText =
             "البحث عن وصفات";
 
-        if (document.getElementById("resultsTitle")) {
-            document.getElementById("resultsTitle").innerText =
-                "النتائج";
+        const resultsTitle = document.getElementById("resultsTitle");
+
+        if (resultsTitle) {
+            resultsTitle.innerText = "النتائج";
         }
 
         document.querySelectorAll(".available-label")
@@ -210,8 +209,7 @@ function toggleLanguage() {
 
         document.querySelectorAll(".ready-text")
             .forEach(el =>
-                el.innerText =
-                "يمكنكِ تحضير هذه الوصفة!"
+                el.innerText = "يمكنكِ تحضير هذه الوصفة!"
             );
 
         document.getElementById("homeButton").innerText =
@@ -239,9 +237,10 @@ function toggleLanguage() {
         document.getElementById("searchButton").innerText =
             "Find Recipes";
 
-        if (document.getElementById("resultsTitle")) {
-            document.getElementById("resultsTitle").innerText =
-                "Results";
+        const resultsTitle = document.getElementById("resultsTitle");
+
+        if (resultsTitle) {
+            resultsTitle.innerText = "Results";
         }
 
         document.querySelectorAll(".available-label")
@@ -255,8 +254,7 @@ function toggleLanguage() {
 
         document.querySelectorAll(".ready-text")
             .forEach(el =>
-                el.innerText =
-                "You can prepare this recipe!"
+                el.innerText = "You can prepare this recipe!"
             );
 
         document.getElementById("homeButton").innerText =

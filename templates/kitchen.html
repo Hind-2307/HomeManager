@@ -163,8 +163,7 @@ function toggleLanguage() {
 
     arabic = !arabic;
 
-    const button =
-        document.getElementById("languageButton");
+    const button = document.getElementById("languageButton");
 
     if (arabic) {
 
@@ -206,8 +205,10 @@ function toggleLanguage() {
         document.querySelectorAll(".delete")
             .forEach(el => el.innerText = "حذف");
 
-        if (document.getElementById("emptyText")) {
-            document.getElementById("emptyText").innerText =
+        const emptyText = document.getElementById("emptyText");
+
+        if (emptyText) {
+            emptyText.innerText =
                 "لا توجد موارد مضافة حتى الآن.";
         }
 
@@ -254,8 +255,10 @@ function toggleLanguage() {
         document.querySelectorAll(".delete")
             .forEach(el => el.innerText = "Delete");
 
-        if (document.getElementById("emptyText")) {
-            document.getElementById("emptyText").innerText =
+        const emptyText = document.getElementById("emptyText");
+
+        if (emptyText) {
+            emptyText.innerText =
                 "No resources have been added yet.";
         }
 
