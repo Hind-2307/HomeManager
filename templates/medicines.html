@@ -241,8 +241,7 @@ function toggleLanguage() {
 
     arabic = !arabic;
 
-    const button =
-        document.getElementById("languageButton");
+    const button = document.getElementById("languageButton");
 
     if (arabic) {
 
@@ -301,27 +300,26 @@ function toggleLanguage() {
 
         document.querySelectorAll(".low-warning")
             .forEach(el =>
-                el.innerText =
-                "تنبيه: الكمية وصلت للحد الأدنى"
+                el.innerText = "تنبيه: الكمية وصلت للحد الأدنى"
             );
 
         document.querySelectorAll(".expired-warning")
             .forEach(el =>
-                el.innerText =
-                "هذا الدواء منتهي الصلاحية"
+                el.innerText = "هذا الدواء منتهي الصلاحية"
             );
 
         document.querySelectorAll(".soon-warning")
             .forEach(el =>
-                el.innerText =
-                "تنبيه: تاريخ انتهاء الدواء قريب"
+                el.innerText = "تنبيه: تاريخ انتهاء الدواء قريب"
             );
 
         document.querySelectorAll(".delete")
             .forEach(el => el.innerText = "حذف");
 
-        if (document.getElementById("emptyText")) {
-            document.getElementById("emptyText").innerText =
+        const emptyText = document.getElementById("emptyText");
+
+        if (emptyText) {
+            emptyText.innerText =
                 "لا توجد أدوية مضافة حتى الآن.";
         }
 
@@ -385,27 +383,26 @@ function toggleLanguage() {
 
         document.querySelectorAll(".low-warning")
             .forEach(el =>
-                el.innerText =
-                "Warning: Quantity reached the minimum"
+                el.innerText = "Warning: Quantity reached the minimum"
             );
 
         document.querySelectorAll(".expired-warning")
             .forEach(el =>
-                el.innerText =
-                "This medicine has expired"
+                el.innerText = "This medicine has expired"
             );
 
         document.querySelectorAll(".soon-warning")
             .forEach(el =>
-                el.innerText =
-                "Warning: Medicine expiry date is near"
+                el.innerText = "Warning: Medicine expiry date is near"
             );
 
         document.querySelectorAll(".delete")
             .forEach(el => el.innerText = "Delete");
 
-        if (document.getElementById("emptyText")) {
-            document.getElementById("emptyText").innerText =
+        const emptyText = document.getElementById("emptyText");
+
+        if (emptyText) {
+            emptyText.innerText =
                 "No medicines have been added yet.";
         }
 
